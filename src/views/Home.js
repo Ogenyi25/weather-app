@@ -4,6 +4,7 @@ const api = {
   key: "cdd4fcfe35cc4dae33762c62765ddcf5",
   base: "https://api.openweathermap.org/data/2.5/"
 }
+console.log(api.key)
 
 function Home() {
 
@@ -45,6 +46,12 @@ function Home() {
       : 'app-warm')
     : 'app-default'}>
       <div className="main">
+        <div className="welcome-note">
+          <div className="title">WEATHER CHECKER APP</div>
+          <div className="notes">
+            Enter a location name to get weather details.
+          </div>
+        </div>
         <div className="search-box">
           <input
             type="text"

@@ -3,9 +3,6 @@ import Home from './views/Home';
 
 
 function App() {
-
-  
-
   return (
     <div className=" row welcome-page container-fluid">
       <div className="left-pane col-md-4">
