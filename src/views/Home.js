@@ -45,7 +45,8 @@ const Home =()=> {
   const getCity = (coordinates) => {
     let lat = coordinates[0];
     let lon = coordinates[1];
-    fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+    
+    fetch(`${api.base}weather?lat=${lat}&lon=${lon}&appid=${api.key}`)
       .then(({ data }) => {
         let results = data;
         setWeather((prevState) => {
