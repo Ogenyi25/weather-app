@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const api = {
   key: "cdd4fcfe35cc4dae33762c62765ddcf5",
@@ -23,6 +23,43 @@ const Home =()=> {
         });
     }
   }
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        console.log("coordinates");
+        let lat = position.coords.latitude;
+        let long = position.coords.longitude;
+        let coordinates = [lat, long];
+        // console.log(`Latitude: ${lat}, Longitude: ${long}`);
+        getCity(coordinates);
+      },
+      function (err) {
+        console.log("coordinates");
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+        console.log("The Locator was denied. :(");
+      }
+    );
+  }, []);
+
+  const getCity = (coordinates) => {
+    let lat = coordinates[0];
+    let lon = coordinates[1];
+    fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+      .then(({ data }) => {
+        let results = data;
+        setWeather((prevState) => {
+          return {
+            ...prevState,
+            results: results,
+          };
+        });
+        setQuery('');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const dateBuilder = (d) => {
     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
