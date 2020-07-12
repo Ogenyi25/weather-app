@@ -42,6 +42,7 @@ const Home =()=> {
     );
   }, []);
 
+  //This should get user current location and give weather details of that location.
   const getCity = (coordinates) => {
     let lat = coordinates[0];
     let lon = coordinates[1];
