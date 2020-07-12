@@ -6,7 +6,7 @@ const api = {
 }
 console.log(api.key)
 
-function Home() {
+const Home =()=> {
 
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
@@ -56,7 +56,7 @@ function Home() {
           <input
             type="text"
             className="search-bar"
-            placeholder="search ...."
+            placeholder="Enter city name"
             onChange={e => setQuery(e.target.value)}
             value={query}
             onKeyPress={search}
